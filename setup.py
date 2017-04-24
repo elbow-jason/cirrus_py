@@ -18,11 +18,8 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-
-install_reqs = parse_requirements("requirements.txt")
-
-
-reqs = [str(ir.req) for ir in install_reqs]
+with open("requirements.txt", "r") as file_h:
+    reqs = [l.strip() for l in file_h.readlines()]
 
 setup(
     name='cirrus_py',
