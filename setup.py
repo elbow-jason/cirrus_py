@@ -7,7 +7,7 @@ https://github.com/pypa/sampleproject
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-
+from pip.req import parse_requirements
 # To use a consistent encoding
 from codecs import open
 from os import path
@@ -17,6 +17,12 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
+
+
+install_reqs = parse_requirements("requirements.txt")
+
+
+reqs = [str(ir.req) for ir in install_reqs]
 
 setup(
     name='cirrus_py',
@@ -39,5 +45,5 @@ setup(
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=['PyJWT', 'requests'],
+    install_requires=reqs,
 )
