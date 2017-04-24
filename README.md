@@ -1,7 +1,5 @@
 # cirrus_py
 
-
-
 ## Usage
 ```python
 from cirrus_py.credentials import ServiceAccountCredentials
